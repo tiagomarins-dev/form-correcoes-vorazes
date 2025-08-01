@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário - Página 4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            padding: 56px 48px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+        
+        .flame-icon {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: #FF6B35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .flame-icon::after {
+            content: '🔥';
+            font-size: 28px;
+        }
+        
+        h1 {
+            color: #1A1A1A;
+            font-size: 34px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+        
+        h2 {
+            color: #666;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 44px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        label {
+            display: block;
+            color: #1A1A1A;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f5f5f5;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+        
+        input:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 0 0 0 3px #FFD93D, inset 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+        
+        button {
+            width: 100%;
+            padding: 18px;
+            background-color: #1A1A1A;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background-color: #FF6B35;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            z-index: 0;
+        }
+        
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:hover::after {
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flame-icon"></div>
+        <h1>Não perca a próxima edição do Correções Vorazes com a Milla Borges!</h1>
+        <h2>As lives são gratuitas, mas o conteúdo é VIP. Entre no grupo de WhatsApp e receba tudo em tempo real.</h2>
+        
+        <form>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone (WhatsApp)</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+            </div>
+            
+            <button type="submit"><span>Salvar</span></button>
+        </form>
+    </div>
+</body>
+</html>

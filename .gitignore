@@ -1,0 +1,17 @@
+# Data files
+/data/
+*.json
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker volumes
+docker-compose.override.yml
