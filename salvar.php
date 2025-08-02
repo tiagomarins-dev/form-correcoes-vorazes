@@ -60,18 +60,33 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 // Clean phone number (remove formatting)
 $telefoneClean = preg_replace('/\D/', '', $telefone);
 
+// Add Brazil country code (55) if not present
+if (strlen($telefoneClean) == 10 || strlen($telefoneClean) == 11) {
+    // Brazilian phone number without country code
+    $telefoneDDI = '55' . $telefoneClean;
+} elseif (substr($telefoneClean, 0, 2) !== '55') {
+    // Add 55 if it doesn't start with it
+    $telefoneDDI = '55' . $telefoneClean;
+} else {
+    // Already has country code
+    $telefoneDDI = $telefoneClean;
+}
+
 // Set timezone to Brazil
 date_default_timezone_set('America/Sao_Paulo');
 
 // Function to send contact to ActiveCampaign
 function sendToActiveCampaign($email, $nome, $telefone) {
+    // Format phone with + for international format
+    $phoneFormatted = '+' . $telefone;
+    
     // Create contact
     $contactData = [
         'contact' => [
             'email' => $email,
             'firstName' => explode(' ', $nome)[0],
             'lastName' => trim(substr($nome, strpos($nome, ' ') + 1)),
-            'phone' => $telefone
+            'phone' => $phoneFormatted
         ]
     ];
     
@@ -145,6 +160,7 @@ $novaInscricao = [
     'email' => $email,
     'telefone' => $telefone,
     'telefone_limpo' => $telefoneClean,
+    'telefone_ddi' => $telefoneDDI,
     'data_cadastro' => date('Y-m-d H:i:s'),
     'ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown',
     'activecampaign_status' => 'pending'
@@ -184,7 +200,7 @@ if ($emailJaExiste) {
 }
 
 // Send to ActiveCampaign (don't block if it fails)
-$acSuccess = sendToActiveCampaign($email, $nome, $telefone);
+$acSuccess = sendToActiveCampaign($email, $nome, $telefoneDDI);
 
 // Update ActiveCampaign status based on result
 $novaInscricao['activecampaign_status'] = $acSuccess ? 'success' : 'failed';
@@ -202,7 +218,7 @@ if (file_put_contents($dataFile, json_encode($inscricoes, $jsonFlags)) !== false
     
     if ($csvHandle) {
         // Write CSV header
-        fputcsv($csvHandle, ['ID', 'Nome', 'Email', 'Telefone', 'Data Cadastro', 'ActiveCampaign Status']);
+        fputcsv($csvHandle, ['ID', 'Nome', 'Email', 'Telefone', 'Telefone DDI', 'Data Cadastro', 'ActiveCampaign Status']);
         
         // Write all registrations
         foreach ($inscricoes as $inscricao) {
@@ -211,6 +227,7 @@ if (file_put_contents($dataFile, json_encode($inscricoes, $jsonFlags)) !== false
                 $inscricao['nome'],
                 $inscricao['email'],
                 $inscricao['telefone'],
+                '+' . ($inscricao['telefone_ddi'] ?? $inscricao['telefone_limpo'] ?? ''),
                 $inscricao['data_cadastro'],
                 $inscricao['activecampaign_status'] ?? 'unknown'
             ]);
