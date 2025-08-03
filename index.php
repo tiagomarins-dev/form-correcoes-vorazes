@@ -23,32 +23,30 @@
         
         .container {
             background: white;
-            padding: 56px 48px;
+            padding: 40px 48px;
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 600px;
+            max-width: 720px;
             position: relative;
         }
         
-        .flame-icon {
+        .tordo-icon {
             position: absolute;
-            top: -30px;
+            top: -80px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            background-color: #FF6B35;
-            border-radius: 50%;
+            width: 160px;
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
         }
         
-        .flame-icon::after {
-            content: '🔥';
-            font-size: 28px;
+        .tordo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         h1 {
@@ -57,19 +55,19 @@
             margin-bottom: 12px;
             text-align: center;
             font-weight: 700;
-            margin-top: 20px;
+            margin-top: 90px;
         }
         
         h2 {
             color: #666;
             font-size: 18px;
             font-weight: 400;
-            margin-bottom: 44px;
+            margin-bottom: 36px;
             text-align: center;
         }
         
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         
         label {
@@ -264,7 +262,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="flame-icon"></div>
+        <div class="tordo-icon">
+            <img src="assets/tordo-2.png" alt="Tordo - Correções Vorazes">
+        </div>
         
         <div id="formScreen">
             <h1>Não perca a próxima edição do Correções Vorazes com a Milla Borges!</h1>
