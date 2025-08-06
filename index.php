@@ -73,7 +73,23 @@
             font-size: 18px;
             font-weight: 400;
             margin-bottom: 36px;
-            text-align: center;
+            text-align: left;
+            line-height: 1.8;
+        }
+        
+        .subtitle-highlight {
+            color: #1A1A1A;
+            font-weight: 600;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        
+        .subtitle-detail {
+            color: #FF6B35;
+            font-weight: 500;
+            display: block;
+            margin-top: 12px;
         }
         
         .form-group {
@@ -277,8 +293,12 @@
         </div>
         
         <div id="formScreen">
-            <h1>Não perca a próxima edição do Correções Vorazes com a Milla Borges!</h1>
-            <h2>As lives são gratuitas, mas o conteúdo é VIP. Entre no grupo de WhatsApp e receba tudo em tempo real.</h2>
+            <h1>Não perca a próxima edição de “Correções Vorazes” com Prof. Milla Borges</h1>
+            <h2>
+                <span class="subtitle-highlight">Vamos elevar o nível da sua preparação para a redação do ENEM!</span>
+                Lives gratuitas com um conteúdo de valor que muito cursinho pago não entrega!
+                <span class="subtitle-detail">Entre no grupo de WhatsApp para receber vantagens e saber de tudo em tempo real!</span>
+            </h2>
             
             <div id="alert" class="alert"></div>
             
