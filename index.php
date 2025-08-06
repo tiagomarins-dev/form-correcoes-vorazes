@@ -37,7 +37,7 @@
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 720px;
+            max-width: 820px;
             position: relative;
         }
         
@@ -61,35 +61,55 @@
         
         h1 {
             color: #1A1A1A;
-            font-size: 34px;
-            margin-bottom: 12px;
+            font-size: 28px;
+            margin-bottom: 24px;
             text-align: center;
             font-weight: 700;
             margin-top: 90px;
+            line-height: 1.3;
         }
         
-        h2 {
+        .subtitle-container {
+            padding: 0 0 32px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .subtitle-container p {
             color: #666;
-            font-size: 18px;
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.6;
             font-weight: 400;
-            margin-bottom: 36px;
-            text-align: left;
-            line-height: 1.8;
         }
         
-        .subtitle-highlight {
-            color: #1A1A1A;
-            font-weight: 600;
-            font-size: 20px;
-            display: block;
+        .subtitle-container p:not(:last-child) {
             margin-bottom: 12px;
         }
         
-        .subtitle-detail {
+        .subtitle-container .highlight {
+            font-size: 22px;
+            font-weight: 700;
             color: #FF6B35;
-            font-weight: 500;
             display: block;
-            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle-container .emphasis {
+            color: #1A1A1A;
+            font-weight: 600;
+        }
+        
+        .subtitle-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD93D 0%, #FF6B35 100%);
+            border-radius: 2px;
         }
         
         .form-group {
@@ -293,12 +313,13 @@
         </div>
         
         <div id="formScreen">
-            <h1>Não perca a próxima edição de “Correções Vorazes” com Prof. Milla Borges</h1>
-            <h2>
-                <span class="subtitle-highlight">Vamos elevar o nível da sua preparação para a redação do ENEM!</span>
-                Lives gratuitas com um conteúdo de valor que muito cursinho pago não entrega!
-                <span class="subtitle-detail">Entre no grupo de WhatsApp para receber vantagens e saber de tudo em tempo real!</span>
-            </h2>
+            <h1>Não perca a próxima edição de<br>"Correções Vorazes" com Prof. Milla Borges</h1>
+            
+            <div class="subtitle-container">
+                <p class="highlight">Vamos elevar o nível da sua preparação para a redação do ENEM!</p>
+                <p><span class="emphasis">Lives gratuitas</span> com um conteúdo de valor que muito cursinho pago não entrega!</p>
+                <p>Entre no <span class="emphasis">grupo de WhatsApp</span> para receber vantagens e saber de tudo em tempo real!</p>
+            </div>
             
             <div id="alert" class="alert"></div>
             
